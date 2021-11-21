@@ -30,3 +30,14 @@ sales['Grouped'] = sales.groupby('Order_ID')['Product_Category'].transform(lambd
 sales=sales[['Order_ID', 'Grouped']].drop_duplicates()
 
 print(sales)
+
+from itertools import combinations
+from collections import Counter
+
+count = Counter()
+for row in sales['Grouped']:
+    row_list = row.split(',')
+    count.update(Counter(combinations(row_list, 2)))
+
+for key, value in count.most_common():
+    print(key, value)
