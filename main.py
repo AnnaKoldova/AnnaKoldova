@@ -22,6 +22,9 @@ print(sales.loc[(sales['Customer_Segment'] == 'Corporate') & (sales['Ship_Mode']
 
 #duplicates
 print(sales.duplicated(subset=['Order_ID', 'Sales']).sum())
+print(sales.duplicated(subset=['Order_ID']))
 
+#group by
+print(sales.groupby(['Region']).count())
 
 
